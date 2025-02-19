@@ -22,30 +22,24 @@ const Home = () => {
   const [bookingSuccess, setBookingSuccess] = useState(false);
 
   useEffect(() => {
-    if(window.gtag){
-    window.gtag("config", "G-XXXXXXXXXX");
-  }}, []);
+    if (window.gtag) {
+      window.gtag("config", "G-XXXXXXXXXX");
+    }
+  }, []);
 
-  const handleLogin = async () => {
+  // Simulated room data (Instead of fetching from backend)
+  const roomData = [
+    { id: 1, name: "Deluxe Room", description: "A luxurious room with a sea view.", price: 5000 },
+    { id: 2, name: "Standard Room", description: "A comfortable room for budget travelers.", price: 2500 }
+  ];
+
+  const handleLogin = () => {
     if (mobile.length !== 10 || isNaN(mobile)) {
       alert("Please enter a valid 10-digit mobile number.");
       return;
     }
-    const response = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ mobile }),
-    });
-    if (response.ok) {
-      setIsLoggedIn(true);
-      fetchRooms();
-    }
-  };
-
-  const fetchRooms = async () => {
-    const response = await fetch("http://localhost:5000/rooms");
-    const data = await response.json();
-    setRooms(data);
+    setIsLoggedIn(true);
+    setRooms(roomData); // Load room data after login
   };
 
   const handleBooking = () => {
