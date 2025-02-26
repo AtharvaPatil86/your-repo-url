@@ -90,17 +90,16 @@ const Home = () => {
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center vh-100">
       {!isLoggedIn ? (
-        <div className="card p-4 shadow-lg text-center w-50 border-primary rounded">
+        <><h5 className="text-muted mb-2">21, Palm Beach Road, Mumbai</h5><div className="card p-4 shadow-lg text-center w-50 border-primary rounded">
           <img src={overview} alt="Hotel Overview" className="img-fluid rounded mb-3" />
           <h2 className="text-primary mb-3">Welcome to Patil's Inn</h2>
           <Input
             type="text"
             placeholder="Enter Mobile Number"
             value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
-          />
+            onChange={(e) => setMobile(e.target.value)} />
           <Button onClick={handleLogin}>Login</Button>
-        </div>
+        </div></>
       ) : bookingSuccess ? (
         <div className="card p-4 shadow-lg text-center w-50 bg-success text-white rounded">
           <h2 className="mb-3">Room Booked Successfully!</h2>
